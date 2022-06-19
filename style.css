@@ -1,0 +1,98 @@
+/* CSS Document */
+body {
+	background-color: #AAC5D1;
+}
+.header {
+	height: 179px;
+	width: 809px;
+}
+.menu {
+	height: 37px;
+	width: 809px;
+}
+.corps {
+	background-image: url(images/body.gif);
+	width: 809px;
+}
+.foot {
+	background-image: url(images/foot.gif);
+	text-align: center;
+	height: 26px;
+	width: 809px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #153359;
+}
+.institutionnels {
+	background-image: url(images/body.gif);
+	text-align: center;
+	height: 70px;
+	width: 809px;
+}
+.bloc_head {
+	background-image: url(images/bloc_fond.gif);
+}
+.bloc_accueil {
+	width: 153px;
+	background-image: url(images/bloc_gaucheback.gif);
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.bloc_centre {
+	width: 469px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-image: url(images/bloc_centre_back.gif);
+}
+.titres_bloc {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #E9E9E9;
+	text-align: center;
+}
+.texte_bloc {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: justify;
+}
+.texte_bloc_resultats {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #143357;
+	margin-left: 3px;
+	margin-right: 2px;
+	text-align: center;
+}	
+.postbody {
+    font-size : 12px; line-height: 18px
+}
+a:link {
+	text-decoration: underline;
+	color: #143357;
+}
+a:visited {
+	text-decoration: none;
+	color: #143357;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+	color: #143357;
+}
+.deroulant {
+	background-color: #7EA6CA;
+}
+.galerie {
+	width: 100%;
+	margin-right: 20px;
+}

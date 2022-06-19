@@ -1,0 +1,165 @@
+<!--------------------------------------->
+<!-- Fichier: main.htm		       -->
+<!-- Creation: CCY - Oct 1998          -->
+<!--------------------------------------->
+<html>
+
+<head>
+<title>Main BleuetsPau</title>
+<meta NAME="keywords" CONTENT="webcyril,bleuetspau,bleuets,pau,bleuets pau,football">
+<meta NAME="description" content="Bienvenue aux Bleuets de Pau !">
+<meta name="robots" content="index, follow, all">
+
+<style type="text/css">
+<!--
+body {
+scrollbar-face-color:        #95BED5;
+scrollbar-shadow-color:        #336580;
+scrollbar-highlight-color:    #FFFFFF;
+scrollbar-3dlight-color:    #365285;
+scrollbar-darkshadow-color:    #95BED5;
+scrollbar-track-color:        #EAF2F7;
+scrollbar-arrow-color:        #ffffff
+}
+//-->
+</style>
+
+<!-- musique d'intro -->
+<bgsound src="intro.mid" loop="0">
+
+</head>
+
+<script LANGUAGE="javascript" src="script/boutondroitinterdit.js"></script>
+
+<script language="javascript">
+
+<!-- Fonction renvoyant le nom et la version du navigateur
+function browserID()
+	{
+	var name = navigator.appName ;
+	var version = navigator.appVersion;
+	if (name == 'Netscape')
+	{
+		name = 'Netscape Navigator';
+		version = navigator.appVersion.substring(0,4);
+	}
+	else
+	{
+		if (name == 'Microsoft Internet Explorer')
+		{
+			id = version.indexOf('MSIE');
+			version = version.substring(id+5,id+9);
+		}
+		else
+		{
+			name = 'Navigateur inconnu';
+			version = '0.00';
+		}
+	}
+	ID = name + ' ' + version;
+	return ID;
+	}
+// -- Fin browserID -->
+
+<!-- Fonction d'affichage d'un message dans la barre d'etat
+function scroll(seed)
+			{
+				var m1 = "**** Bienvenue sur le site Web non officiel des Bleuets de Pau ****";
+				var m2 = "";
+				var m3 = "";
+				var m4 = "";
+				var msg=m1+m2+m3+m4;
+				var out = " ";
+				var c   = 1;
+				if (seed > 100)
+					{
+						seed--;
+						var cmd="scroll(" + seed + ")";
+						timerTwo=window.setTimeout(cmd,100);
+					}
+				else
+				if (seed <= 100 && seed > 0)
+					{
+						for (c=1 ; c < seed ; c++)
+							{
+								out+=" ";
+							}
+						out+=msg;
+						seed--;
+						var cmd="scroll(" + seed + ")";
+						window.status=out;
+						timerTwo=window.setTimeout(cmd,50);
+					}
+				else
+				if (seed <= 0)
+					{
+						if (-seed < msg.length)
+							{
+								out+=msg.substring(-seed,msg.length);
+								seed--;
+								var cmd="scroll(" + seed + ")";
+								window.status=out;
+								timerTwo=window.setTimeout(cmd,50);
+							}
+						else
+							{
+								window.status=" ";
+								timerTwo=window.setTimeout("scroll(100)",50);
+							}
+					}
+			}
+// -- Fin scroll -->
+
+<!-- Fonction d'affichage d'un message dans la barre d'etat 2
+var msg = "Bienvenue sur le ouaibe de Cyril, Nathalie et Melvin ..."
+var lentxt=msg.length;
+var width=250;
+var count=0;
+var left=0;
+var abc=0;
+
+function scroll2() {
+  var txt="";
+  var scroller="";
+
+  if (abc>0) {
+    if ((abc%2)==1) {
+      window.status="";
+    } else {
+      window.status=msg;
+    }
+    abc++;
+    if (abc==8) abc=0;
+  } else {
+    if (count>0) {
+      scroller=msg.substring(0,count);
+      txt=msg.substring(count,count+2);
+    } else {
+      txt=msg.substring(0,2);
+    }
+    if ((width-left)>2) {
+      left+=(width-left)/2;
+    } else { left++; }
+    for (var i=0; i<(width-left); i++) {
+      scroller=scroller+" ";
+    }
+    if (left>=width) {
+      count+=2;
+      left=count*2;
+    }
+    if (count>=lentxt) {
+      pos=count=0;
+      abc=1;
+    }
+    scroller=scroller+txt;
+    window.status=scroller;
+  }
+  setTimeout("scroll2()",0);
+}
+// -- Fin scroll2 -->
+
+</script>
+<!-------------------------------------------------------------------------------------------->
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#FF0000" onLoad="timerONE=window.setTimeout('scroll(100)',500);" background="images/omfond.jpg">
+</body>

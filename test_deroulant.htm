@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+	<title>un menu déroulant en CSS et javascript</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<script language="JavaScript" type="text/JavaScript" src="menu-deroulant.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<!-- Menu  -->
+<dl id="menu">
+		<dt onmouseover="javascript:montre('smenu1');">
+		<font face="Arial" size="1"><a href="#">Actualité</a></font></dt>
+			<dd id="smenu1" onmouseover="javascript:montre('smenu1');" onmouseout="javascript:montre();">
+				<ul>
+					<li><font face="Arial" size="1"><a href="actu2007.htm">2006/07</a></font></li>
+					<li><font face="Arial" size="1"><a href="actu2006.htm">2005/06</a></font></li>
+					<li><font face="Arial" size="1"><a href="actu2005.htm">2004/05</a></font></li>
+					<li><font face="Arial" size="1"><a href="actu2004.htm">2003/04</a></font></li>
+					<li><font face="Arial" size="1"><a href="actu2003.htm">2002/03</a></font></li>
+					<li><font face="Arial" size="1"><a href="actu2002.htm">2001/02</a></font></li>
+				</ul>
+			</dd>	
+			
+		<dt onmouseover="javascript:montre('smenu2');" onmouseout="javascript:montre();">
+		<font face="Arial" size="1">Saison</font></dt>
+			<dd id="smenu2" onmouseover="javascript:montre('smenu2');" onmouseout="javascript:montre();">
+				<ul>
+					<li><font face="Arial" size="1"><a href="download/2007/Bleuets2007.xls">2006/07</a></font></li>
+					<li><font face="Arial" size="1"><a href="download/2006/Bleuets2006.xls">2005/06</a></font></li>
+					<li><font face="Arial" size="1"><a href="download/2005/Bleuets2005.xls">2004/05</a></font></li>
+					<li><font face="Arial" size="1"><a href="download/2004/Bleuets2004.xls">2003/04</a></font></li>
+					<li><font face="Arial" size="1"><a href="download/2003/Bleuets2003.xls">2002/03</a></font></li>
+				</ul>
+			</dd>	
+
+		<dt onmouseover="javascript:montre('smenu3');" onmouseout="javascript:montre();">
+		<font face="Arial" size="1">Presse</font></dt>
+			<dd id="smenu3" onmouseover="javascript:montre('smenu3');" onmouseout="javascript:montre();" style="position: absolute; left: 140px; margin-top: -21px">
+				<ul>
+					<li><font face="Arial" size="1"><a href="presse2007.htm">2006/07</a></font></li>
+					<li><font face="Arial" size="1"><a href="presse2006.htm">2005/06</a></font></li>
+					<li><font face="Arial" size="1"><a href="presse2005.htm">2004/05</a></font></li>
+					<li><font face="Arial" size="1"><a href="presse2004.htm">2003/04</a></font></li>
+					<li><font face="Arial" size="1"><a href="presse2003.htm">2002/03</a></font></li>
+					<li><font face="Arial" size="1"><a href="presse2002.htm">2001/02</a></font></li>
+				</ul>
+			</dd>
+
+		<dt onmouseover="javascript:montre('smenu4');" onmouseout="javascript:montre();">
+		<font face="Arial" size="1">Effectif</font></dt>
+			<dd id="smenu4" onmouseover="javascript:montre('smenu4');" onmouseout="javascript:montre();">
+				<ul>
+					<li><font face="Arial" size="1"><a href="effectif2007.htm">2006/07</a></font></li>
+					<li><font face="Arial" size="1"><a href="effectif2006.htm">2005/06</a></font></li>
+					<li><font face="Arial" size="1"><a href="effectif2006.htm">2004/05</a></font></li>
+					<li><font face="Arial" size="1"><a href="effectif2006.htm">2003/04</a></font></li>
+					<li><font face="Arial" size="1"><a href="effectif2006.htm">2002/03</a></font></li>
+					<li><font face="Arial" size="1"><a href="effectif2006.htm">2001/02</a></font></li>
+				</ul>
+			</dd>
+
+</dl>
+</html>

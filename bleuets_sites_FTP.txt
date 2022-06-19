@@ -1,0 +1,17 @@
+FTP BLEUETS
+===========
+
+Free:
+FTP Host Address: ftpperso.free.fr
+FTP site User Name: bleuetspau
+FTP site Password: bleuets6
+
+Tiscali:
+FTP Host Address: ftp.chez.tiscali.fr
+FTP site User Name: bleuetspau@tiscali.fr
+FTP site Password: bleuets64
+
+Lycos:
+FTP Host Address: ftp.membres.lycos.fr
+FTP site User Name: bleuetspauforum
+FTP site Password: bleuets
