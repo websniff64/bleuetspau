@@ -1,0 +1,1213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0187)http://www.fff.fr/cgi-bin/championnats/champ_calend.pl?code_cg=0508&code_comp=31111&type_rech=club&numclub=526282&indexequipe=2&libelleclub=PAU%20BLEUETS%20%20&typeclub=deux&lieuclub=deux -->
+<HTML><HEAD><TITLE>Site Officiel de la F.F.F. - Les championnats régionaux et départementaux</TITLE><!-- #BeginTemplate "/Templates/cham_regi_cale.dwt" --><!-- #BeginEditable "doctitle" --><!-- #EndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language=JavaScript src="EquipeB2003_res_fichiers/FFF_Lib.js"></SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+
+//-----------------------------------------
+// lancement d'une fenetre
+//-----------------------------------------
+function majpoule()
+{
+	var p_poule = document.Formulaire.poule.options[document.Formulaire.poule.selectedIndex].value;
+	if (p_poule!="null")
+	{
+		var param = "code_cg=0508&code_comp=31111&poule=" + p_poule;
+		self.location.href="/cgi-bin/championnats/champ_result.pl?" + param;
+	}
+}
+
+//-----------------------------------------
+// Changement de district
+//-----------------------------------------
+function ChangeCompet()
+{
+	var infos = document.Formulaire.compet.options[document.Formulaire.compet.selectedIndex].value
+	if (infos!="null")
+	{
+	   var code_comp = infos.substring(0,5);
+	   var IsPoule = infos.substring(6,9);
+
+	   if (IsPoule == "oui")
+	   {
+		reponse = launch("/cgi-bin/championnats/champ_listpoul.pl?code_cg=0508&code_comp=" + code_comp, "lavisu", "toolbar=0,location=0,directories=0,status=0,scrollbars=0,resizable=1,copyhistory=0,width=480,height=350,left=10,top=5", "depart");
+	   }
+	   else
+	   {
+		self.location.href="/cgi-bin/championnats/champ_result.pl?code_cg=0508&code_comp=" + code_comp;
+	   }
+	}
+}
+
+//-----------------------------------------
+// Calendrier en fonction d'une journee
+//-----------------------------------------
+function Rech_Jour()
+{
+	var journee = document.Formulaire2.choixjour.options[document.Formulaire2.choixjour.selectedIndex].value;
+	if (journee != "null")
+	{
+		self.location.href="/cgi-bin/championnats/champ_calend.pl?code_cg=0508&code_comp=31111&type_rech=jour&journee=" + journee;
+	}
+
+}
+
+//-----------------------------------------
+// Calendrier en fonction d'une date
+//-----------------------------------------
+function Rech_Date(ladate)
+{
+	if ( (ladate == "") || (!JS_isNum(ladate)) || (ladate.length!=6) )
+	{
+		window.alert("Veuillez saisir une date valide (au format jjmmaa)");
+		document.Formulaire3.choixdate.focus();
+	}
+	else
+	{
+		self.location.href="/cgi-bin/championnats/champ_calend.pl?code_cg=0508&code_comp=31111&type_rech=date&date=" + ladate;
+	}
+
+	return false;
+}
+
+//-----------------------------------------
+// Calendrier en fonction d'un club
+//-----------------------------------------
+function Rech_Club()
+{
+	var club = document.Formulaire4.club_libelle.options[document.Formulaire4.club_libelle.selectedIndex].value;
+	var ladate = document.Formulaire5.club_date.value;
+
+	for (i=0; i<document.Formulaire5.club_type.length; i++)
+	{
+		if (document.Formulaire5.club_type[i].checked)
+		{
+			var typeclub = document.Formulaire5.club_type[i].value;
+		}
+	}
+
+	for (i=0; i<document.Formulaire5.club_lieu.length; i++)
+	{
+		if (document.Formulaire5.club_lieu[i].checked)
+		{
+			var lieuclub = document.Formulaire5.club_lieu[i].value;
+		}
+	}
+
+	if (club == "null")
+	{
+		window.alert("Veuillez choisir un club SVP");
+		return false;
+	}
+	else
+	{
+		var param = "&type_rech=club&numclub=" +club.substring(0,6)+ "&indexequipe=" +club.substring(7,8) + "&libelleclub=" +club.substring(9,club.length);
+		param += "&typeclub=" +typeclub+ "&lieuclub=" +lieuclub;
+	}
+
+	if ( (ladate != "") && (ladate != "jjmmaa") )
+	{
+		if ( (!JS_isNum(ladate)) || (ladate.length!=6 ) )
+		{
+			window.alert("Veuillez saisir une date valide (au format jjmmaa)");
+			document.Formulaire5.club_date.focus();
+		}
+		else
+		{
+			param += "&date=" + ladate;
+			self.location.href="/cgi-bin/championnats/champ_calend.pl?code_cg=0508&code_comp=31111" + param;
+		}
+	}
+	else
+	{
+		self.location.href="/cgi-bin/championnats/champ_calend.pl?code_cg=0508&code_comp=31111" + param;
+	}
+
+	return false;
+}
+
+//-----------------------------------------
+// Changement de district
+//-----------------------------------------
+function majdist()
+{
+	var comp = document.Formulaire.choixdist.options[document.Formulaire.choixdist.selectedIndex].value
+	if (comp!="null")
+	{
+		var param = "code_cg=" + comp;
+		self.location.href="/cgi-bin/championnats/champ_regi.pl?" + param;
+	}
+}
+
+//-----------------------------------------
+// Calendrier en fonction de deux opposants
+//-----------------------------------------
+function Rech_Opp()
+{
+	var opposant1 = document.Formulaire7.opp1.options[document.Formulaire7.opp1.selectedIndex].value;
+	var opposant2 = document.Formulaire7.opp2.options[document.Formulaire7.opp2.selectedIndex].value;
+
+	for (i=0; i<document.Formulaire7.opp_type.length; i++)
+	{
+		if (document.Formulaire7.opp_type[i].checked)
+		{
+			var typeopp = document.Formulaire7.opp_type[i].value;
+		}
+	}
+	
+	if ( (opposant1 == "null") || (opposant2 == "null") )
+	{
+		window.alert("Veuillez choisir deux clubs valides");
+		return
+	}
+
+	if (opposant1 == opposant2)
+	{
+		window.alert("Veuillez choisir deux clubs differents");
+		return
+	}
+
+	var param = "&type_rech=opp&numopp1=" +opposant1.substring(0,6)+ "&equipeopp1=" +opposant1.substring(7,8)+ "&libelleopp1=" +opposant1.substring(9,opposant1.length);
+	param +=  "&typeopp=" +typeopp+ "&numopp2=" +opposant2.substring(0,6)+ "&equipeopp2=" +opposant2.substring(7,8)+ "&libelleopp2=" +opposant2.substring(9,opposant2.length);
+	self.location.href="/cgi-bin/championnats/champ_calend.pl?code_cg=0508&code_comp=31111" + param;
+}
+
+
+//-----------------------------------------
+// Lance la commande launch (ouverture d'une fenetre)
+//-----------------------------------------
+function OuvreFenetre(lien)
+{
+	reponse=launch(lien, "lavisu", "toolbar=0,location=0,directories=0,status=0,scrollbars=0,resizable=1,copyhistory=0,width=480,height=450,left=10,top=5", "depart");
+}
+
+// -->
+</SCRIPT>
+<LINK href="EquipeB2003_res_fichiers/general0.css" rel=stylesheet><LINK 
+href="EquipeB2003_res_fichiers/resucomp.css" rel=stylesheet>
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY bgColor=#000033 leftMargin=0 
+background=EquipeB2003_res_fichiers/fond_cent.gif topMargin=0 onload="" 
+marginheight="0" marginwidth="0"><CENTER><!-- ADTECH JavaScript TAG 2.0 for network: Hi-Media France (NW 224) ++ Website: F - Sport24 ++ ContentUnit: Sp24_superbandeau_rg_club (CU ID 71450) ++ Date: Thu Dec 05 17:55:54 CET 2002 -->
+<SCRIPT language=JavaScript><!--
+var myDate = new Date();
+AT_MISC = myDate.getTime();
+document.write('<scr' + 'ipt src="http://adserver.adtech.de/?addyn|2.0|224|71450|1|16|target=_blank;loc=100;misc=' + AT_MISC + ';">');
+if (navigator.userAgent.indexOf("Mozilla/2.") >= 0 || navigator.userAgent.indexOf("MSIE") >= 0) {
+   document.write('<a href="http://adserver.adtech.de/?adlink|2.0|224|71450|1|16|ADTECH;loc=200;" target="_blank"><img src="http://adserver.adtech.de/?adserv|2.0|224|71450|1|16|ADTECH;loc=200;" border="0" width="1" height="1"></a>');
+}
+document.write('</scr' + 'ipt>');// -->
+</SCRIPT>
+<NOSCRIPT><A 
+href="http://adserver.adtech.de/?adlink|2.0|224|71450|1|16|ADTECH;loc=300;" 
+target=_blank><IMG height=1 
+src="EquipeB2003_res_fichiers/Default_Size_16_1x1.gif" width=1 
+border=0></A></NOSCRIPT></CENTER>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=middle width=130><IMG height=10 
+      src="EquipeB2003_res_fichiers/hautnavi.gif" width=130></TD>
+    <TD vAlign=top align=middle width=500 bgColor=#000066>
+    <TD vAlign=top align=middle><IMG height=10 
+      src="EquipeB2003_res_fichiers/hautinfo.gif" width=130></TD></TR>
+  <TR>
+    <TD vAlign=bottom align=middle width=130 bgColor=#990000>&nbsp;</TD>
+    <TD class=titre vAlign=bottom align=middle width=500 
+      bgColor=#990000>&nbsp;&nbsp;<FONT 
+      face="Verdana, Arial, Helvetica, sans-serif" color=#ffffff size=2><B>Les 
+      Championnats régionaux et départementaux</B></FONT> 
+    <TD vAlign=bottom align=middle bgColor=#990000>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top align=middle width=130 bgColor=#000099 height=7>&nbsp;</TD>
+    <TD vAlign=top align=middle width=500 bgColor=#000066 height=7><IMG 
+      height=7 src="EquipeB2003_res_fichiers/hautcent.gif" width=500></TD>
+    <TD vAlign=bottom align=middle bgColor=#ffcc33 height=7>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top align=middle width=130 bgColor=#000099>
+      <DIV align=center>
+      <TABLE cellSpacing=0 cellPadding=0 width=130 border=0>
+        <TBODY>
+        <TR bgColor=#000099>
+          <TD vAlign=top align=middle><!--Nivo1-0-->
+            <TABLE cellSpacing=0 cellPadding=0 width=127 align=center 
+            bgColor=#000099 border=0>
+              <TBODY>
+              <TR vAlign=center>
+                <TD colSpan=2 height=5><SPACER height="5" type="block"></TD></TR>
+              <TR vAlign=center>
+                <TD colSpan=2 height=1><SPACER height="1" type="block"></TD></TR><!--Nivo1-1-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD width=126 height=20><A class=navigauche 
+                  href="http://www.fff.fr/championnats">CHAMPIONNATS</A></TD></TR><!--fin nivo1-1 --><!--Nivo1-2--><!--fin nivo1-2 --><!--Nivo1-3--><!--nivo1-3-2--><!--fin nivo3-2 --><!--fin nivo1-3 --><!--nivo1-4--><!--fin nivo1-4 --><!--nivo1-5--><!--fin nivo1-5 --><!--nivo1-6--><!--fin nivo1-6 --><!--nivo1-7--><!--fin nivo1-7 --><!--nivo1-8--><!--fin nivo1-8 --><!--nivo1-9--><!--fin nivo1-9 --><!--nivo1-10--><!--fin nivo1-10 --><!--nivo1-11--><!--fin nivo1-11 --><!--nivo1-12--><!--fin nivo1-12 --><!--nivo1-13--><!--fin nivo1-13 --><!--nivo1-14--><!--fin nivo1-14 --><!--nivo1-15--><!--fin nivo1-15 --><!--nivo1-16--><!--fin nivo1-16 -->
+              <TR vAlign=center>
+                <TD colSpan=2 height=1><SPACER height="1" 
+              type="block"></TD></TR></TBODY></TABLE><!--fin nivo1-0--><!--Deb_nivo2-->
+            <TABLE cellSpacing=0 cellPadding=0 width=125 align=center border=0><!--nivo2-0 -->
+              <TBODY>
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <P class=nivo_3><A class=navigauche-3 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11111">LIGUE 
+                  1</A></P></TD></TR>
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 bgColor=#0033cc 
+                  border=0><!--nivo3-0 -->
+                    <TBODY>
+                    <TR vAlign=center>
+                      <TD width=1><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11111">&nbsp;Résultats</A></P></TD></TR><!--fin nivo3-0 --><!--nivo3-1 -->
+                    <TR vAlign=center>
+                      <TD><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/cgi-bin/championnats/champ_class.pl?code_cg=0000&amp;code_comp=11111">&nbsp;Classement</A></P></TD></TR><!--fin nivo3-1 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-4 --><!--fin nivo3-4 --><!--nivo2_5 --><!--fin nivo2_5 --></TBODY></TABLE></TD></TR><!--nivo3-0 -->
+              <TR vAlign=center>
+                <TD bgColor=#000099 colSpan=2 height=10><SPACER height="5" 
+                  type="block"></TD></TR>
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <P class=nivo_3><A class=navigauche-3 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11121">LIGUE 
+                  2</A></P></TD></TR>
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 bgColor=#0033cc 
+                  border=0><!--nivo3-0 -->
+                    <TBODY>
+                    <TR vAlign=center>
+                      <TD width=1><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11121">&nbsp;Résultats</A></P></TD></TR><!--fin nivo3-0 --><!--nivo3-1 -->
+                    <TR vAlign=center>
+                      <TD><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/cgi-bin/championnats/champ_class.pl?code_cg=0000&amp;code_comp=11121">&nbsp;Classement</A></P></TD></TR><!--fin nivo3-1 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-4 --><!--fin nivo3-4 --><!--nivo2_5 --><!--fin nivo2_5 --></TBODY></TABLE></TD></TR><!--fin nivo3-0 --><!--nivo3-1 -->
+              <TR vAlign=center>
+                <TD bgColor=#000099 colSpan=2 height=10><SPACER height="5" 
+                  type="block"></TD></TR>
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <P class=nivo_3><A class=navigauche-3 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11131">NATIONAL</A></P></TD></TR>
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 bgColor=#0033cc 
+                  border=0><!--nivo3-0 -->
+                    <TBODY>
+                    <TR vAlign=center>
+                      <TD width=1><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11131">&nbsp;Résultats</A></P></TD></TR><!--fin nivo3-0 --><!--nivo3-1 -->
+                    <TR vAlign=center>
+                      <TD><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/cgi-bin/championnats/champ_class.pl?code_cg=0000&amp;code_comp=11131">&nbsp;Classement</A></P></TD></TR>
+                    <TR vAlign=center>
+                      <TD><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/compnati/national/index.shtml">&nbsp;Actualité</A></P></TD></TR>
+                    <TR vAlign=center>
+                      <TD><SPACER type="block" width="1"></TD>
+                      <TD>
+                        <P class=nivo_2><A class=navigauche-2 
+                        href="http://www.fff.fr/serv/archive.php?r=4194">&nbsp;Archives</A></P></TD></TR><!--fin nivo3-1 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-4 --><!--fin nivo3-4 --><!--nivo2_5 --><!--fin nivo2_5 --></TBODY></TABLE></TD></TR><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-4 --><!--fin nivo3-4 --><!--nivo2_5 --><!--fin nivo2_5 --><!--nivo2-0 -->
+              <TR vAlign=center>
+                <TD bgColor=#000099 colSpan=2 height=10><SPACER height="5" 
+                  type="block"></TD></TR>
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <P class=nivo_3><A class=navigauche-3 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11141&amp;poule=A">C.F.A</A></P></TD></TR><!--fin nivo2-0 --><!--nivo2-1 --><!--nivo2-2 --><!--fin nivo2-2 --><!--nivo2-3 --><!--fin nivo2-3 --><!--nivo2-4 --><!--fin nivo2-4 --><!--nivo3-0 --><!--fin nivo3-0 --><!--nivo3-1 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-4 --><!--fin nivo3-4 --><!--nivo2_5 --><!--fin nivo2_5 --><!--nivo2-0 -->
+              <TR vAlign=center>
+                <TD bgColor=#0033cc colSpan=2>
+                  <P class=nivo_3><A class=navigauche-3 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0000&amp;code_comp=11151&amp;poule=A">C.F.A.2</A></P></TD></TR><!--fin nivo2-0 --><!--nivo2-1 --><!--nivo2-2 --><!--fin nivo2-2 --><!--nivo2-3 --><!--fin nivo2-3 --><!--nivo2-4 --><!--fin nivo2-4 --><!--nivo3-0 --><!--fin nivo3-0 --><!--nivo3-1 --><!--nivo3-2 --><!--fin nivo3-2 --><!--nivo3-3 --><!--fin nivo3-3 --><!--nivo3-4 --><!--fin nivo3-4 --><!--nivo2_5 --><!--fin nivo2_5 --></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=127 align=center 
+              border=0><TBODY>
+              <TR vAlign=center>
+                <TD bgColor=#000000>
+                  <TABLE cellSpacing=0 cellPadding=0 width=123 align=center 
+                  bgColor=#ffffff border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <P align=left><FONT 
+                        face="Verdana, Arial, Helvetica, sans-serif" 
+                        color=#0033cc size=1>&nbsp;<B>Les championnats 
+                        <BR>&nbsp;Régionaux ou <BR>&nbsp;Départementaux 
+                        :<BR>&nbsp;Tapez un 
+                        &nbsp;département.</B></FONT><B><FONT 
+                        color=#0033cc><BR></FONT></B><FONT 
+                        color=#0033cc></FONT></P>
+                        <FORM name=FormDept 
+                        onsubmit="return rechdist(document.FormDept.Dept.value)">
+                        <P class=nivo_0 align=left>&nbsp; <INPUT maxLength=3 
+                        size=3 name=Dept> <INPUT onclick=javascript:rechdist(document.FormDept.Dept.value); type=button value=ok name=submit2> 
+                        </P></FORM></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD bgColor=#000000><SPACER height="1" 
+              type="block"></TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=128 align=center 
+            bgColor=#000099 border=0>
+              <TBODY>
+              <TR vAlign=center>
+                <TD colSpan=2 height=5><SPACER height="5" type="block"></TD></TR>
+              <TR vAlign=center>
+                <TD colSpan=2 height=1><SPACER height="1" type="block"></TD></TR><!--FFF-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD width=128 height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/bleus/index.shtml">EQUIPE DE 
+                  FRANCE</A></P></TD></TR>
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/conf03/actualite/index.shtml">C.CONFEDERATIONS</A></P></TD></TR>
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD width=128 height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/presentationfff/organisation/1026.shtml">F.F.F</A></P></TD></TR><!--COUPE DE FRANCE-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/cfra/actu/index.shtml">COUPE DE 
+                  FRANCE</A></P></TD></TR><!--EQUIPE DE FRANCE--><!--FEMININES A-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD width=128 height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/femininesa/actu/index.shtml">FEMININE 
+                  A</A></P></TD></TR><!--SELECTIONS-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/selections/2013.shtml">SELECTIONS</A></P></TD></TR><!--ACTUFOOT-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/actu/index.shtml">ACTUFOOT</A></P></TD></TR><!--CALENDRIERS-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/servfff/calendgen/calendrier.php">CALENDRIERS</A></P></TD></TR><!--CLUBS-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/cgi-bin/clubs/accueil.pl">CLUBS</A></P></TD></TR><!--CHAMPIONNATS--><!--COUPES-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/coupes">COUPES</A></P></TD></TR><!--ARBITRAGE-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/rubrique/arbitrage/index.shtml">ARBITRAGE</A></P></TD></TR><!--COUPE DES CONFEDERATIONS--><!--EURO 2004-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/euro04/index.shtml">EURO 
+                2004</A></P></TD></TR><!--COUPES DU MONDE-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/cm/index.shtml">COUPES DU 
+                MONDE</A></P></TD></TR><!--COUPES D'EUROPE-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/europe/direct/index.shtml">COUPES 
+                  D'EUROPE</A></P></TD></TR><!--FORMATION-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/formation/index.shtml">FORMATION</A></P></TD></TR><!--ARBITRAGE--><!--BILLETTERIE-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/billet/index.shtml">BILLETTERIE</A></P></TD></TR><!--SUPPORTERS-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/clubsupporters/index.shtml">SUPPORTERS</A></P></TD></TR><!--PALMARES-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><SPAN class=navigauche><A 
+                  class=navigauche 
+                  href="http://www.fff.fr/palmares/2616.shtml">PALMARES</A></SPAN></P></TD></TR><!--LIENS-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><SPAN class=navigauche><A 
+                  class=navigauche 
+                  href="http://www.fff.fr/liens/1223.shtml">LIENS</A></SPAN></P></TD></TR><!--FAQ-->
+              <TR vAlign=center>
+                <TD width=2><SPACER type="block" width="2"></TD>
+                <TD height=20>
+                  <P class=nivo align=left><A class=navigauche 
+                  href="http://www.fff.fr/faq/1225.shtml">VOS 
+                QUESTIONS</A></P></TD></TR><!--FIN-->
+              <TR vAlign=center>
+                <TD colSpan=2 height=1><SPACER height="1" 
+              type="block"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV></TD>
+    <TD vAlign=top align=middle width=500 bgColor=#000066><!-- #BeginEditable "visuel" -->
+      <FORM name=Formulaire>
+      <TABLE cellSpacing=0 cellPadding=0 width=500 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top bgColor=#ffffff>
+            <TABLE cellSpacing=0 cellPadding=0 width=500 border=0>
+              <TBODY>
+              <TR vAlign=top bgColor=#ffffff>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=top width=500><IMG height=1 
+                        src="EquipeB2003_res_fichiers/hhh.gif" width=498></TD></TR>
+                    <TR class=entete>
+                      <TD vAlign=top width=500>
+                        <DIV align=right><SELECT onchange=majdist(); 
+                        name=choixdist> <OPTION value=0500>LIGUE: 
+                          AQUITAINE</OPTION> <OPTION value=0501>BORDEAUX - dept 
+                          33</OPTION> <OPTION value=0502>DORDOGNE-PERIGORD - 
+                          dept 24</OPTION> <OPTION value=0504>GIRONDE-ATLANTIQUE 
+                          - dept 33</OPTION> <OPTION value=0503>GIRONDE-EST - 
+                          dept 33</OPTION> <OPTION value=0506>LANDES - dept 
+                          40</OPTION> <OPTION value=0507>LOT-ET-GARONNE - dept 
+                          47</OPTION> <OPTION value=0508 selected>PYRENEES 
+                          ATLANTIQUES - dept 64</OPTION> <OPTION 
+                          value=0505>SAUTERNAIS ET GRAVES - dept 
+                        33</OPTION></SELECT> &nbsp;</DIV></TD></TR>
+                    <TR class=entete>
+                      <TD>
+                        <DIV align=right>Championnat : <SELECT 
+                        onchange=javascript:ChangeCompet(); name=compet> 
+                          <OPTION value=null selected>PREMIERE DIVISION</OPTION> 
+                          <OPTION value=31121-oui>PROMOTION PREMIERE 
+                          DIVISION</OPTION> <OPTION value=31131-oui>DEUXIEME 
+                          DIVISION</OPTION> <OPTION value=31141-oui>PROMOTION 
+                          DEUXIEME DIVISION</OPTION> <OPTION 
+                          value=31151-oui>BRASSAGE 3EME DIVISION 
+                          SENIORS</OPTION> <OPTION value=31161-non>3EME DIVISION 
+                          SENIORS A 11</OPTION> <OPTION 
+                          value=31171-non>PROMOTION 3EME DIVIS. SENIORS</OPTION> 
+                          <OPTION value=31211-oui>SENIORS A 7</OPTION> <OPTION 
+                          value=36121-oui>VETERANS A 7</OPTION> <OPTION 
+                          value=37111-oui>FEMININES SENIORS DISTRICT</OPTION> 
+                          <OPTION value=34151-oui>18ANS BRASSAGE 3EME 
+                          DIVISION</OPTION> <OPTION value=35111-non>18 ANS A 
+                          7</OPTION> <OPTION value=35211-oui>15 ANS A 7</OPTION> 
+                          <OPTION value=35311-oui>13 ANS A 7</OPTION> <OPTION 
+                          value=35221-non>15 ANS A 7 NIVEAU 1</OPTION> <OPTION 
+                          value=34251-oui>BRASSAGE 15 ANS 3EME DIVISION</OPTION> 
+                          <OPTION value=34351-oui>13ANS 3EME DIVISION 2E PHASE 
+                          1</OPTION> <OPTION value=33111-non>PREMIERE DIVISION 
+                          18ANS A 11</OPTION> <OPTION value=33121-non>DEUXIEME 
+                          DIVISION 18ANS A 11</OPTION> <OPTION 
+                          value=33211-non>PREMIERE DIVISION 15ANS A 11</OPTION> 
+                          <OPTION value=33221-non>DEUXIEME DIVISION 15ANS A 
+                          11</OPTION> <OPTION value=33321-non>DEUXIEME DIVISION 
+                          13ANS A 11</OPTION> <OPTION value=34121-non>18ANS 3EME 
+                          DIVISION 2E PHASE</OPTION> <OPTION 
+                          value=34171-oui>18ANS PROMOTION 3EME DIVISION</OPTION> 
+                          <OPTION value=34221-non>15ANS 3EME DIVISION 2E 
+                          PHASE</OPTION> <OPTION value=34261-oui>15ANS PROMOTION 
+                          3E DIVISION</OPTION> <OPTION value=34321-oui>13ANS 
+                          3EME DIVISION 2E PHASE</OPTION> <OPTION 
+                          value=34361-oui>13ANS PROMOTION 3E DIVISION</OPTION> 
+                          <OPTION value=35231-non>15ANS A 7 NIVEAU 2</OPTION> 
+                          <OPTION value=35321-non>13 ANS A 7 NIVEAU 1</OPTION> 
+                          <OPTION value=35331-oui>13ANS A 7 NIVEAU 2</OPTION> 
+                          <OPTION value=37121-non>FEMININES SENIORS NIVEAU 
+                          1</OPTION> <OPTION value=37131-non>FEMININES SENIORS 
+                          NIVEAU 2</OPTION> <OPTION value=33311-non>PREMIERE 
+                          DIVISION 13ANS A 11</OPTION> <OPTION 
+                          value=33131-non>13ANS 1ERE DIVISION 2E PHASE</OPTION> 
+                          <OPTION value=31221-oui>SENIORS A 7 - NIVEAU 
+                          1</OPTION> <OPTION value=31231-oui>SENIORS A 7 - 
+                          NIVEAU 2</OPTION> <OPTION value=31241-oui>SENIORS A 7 
+                          - NIVEAU 3</OPTION> <OPTION value=36131-oui>VETERANS A 
+                          7 - NIVEAU 1</OPTION> <OPTION value=36141-oui>VETERANS 
+                          A 7 - NIVEAU 2</OPTION> <OPTION 
+                          value=35411-oui>BENJAMINS A 9 DISTRICT</OPTION> 
+                          <OPTION value=35421-oui>BENJAMINS A 9 
+                          PRE-GUERIN</OPTION> <OPTION value=35431-oui>BENJAMINS 
+                          A 9 2EME NIVEAU</OPTION> <OPTION 
+                          value=35441-oui>BENJAMINS A 9 3EME NIVEAU</OPTION> 
+                          <OPTION value=35451-oui>BENJAMINS A 9 GUERIN</OPTION> 
+                          <OPTION value=35461-oui>BENJAMINS A 9 2EME NIVEAU 
+                          2</OPTION> <OPTION value=35471-oui>BENJAMINS A 9 3EME 
+                          NIVEAU 3</OPTION></SELECT> &nbsp;</DIV></TD></TR>
+                    <TR>
+                      <TD><IMG height=1 src="EquipeB2003_res_fichiers/hhh.gif" 
+                        width=498></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width=500 bgColor=#ffffff border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+              border=0><TBODY>
+              <TR>
+                <TD width=500 colSpan=2><IMG height=1 
+                  src="EquipeB2003_res_fichiers/hhh.gif" width=498></TD></TR>
+              <TR>
+                <TD class=hautpage width=500 colSpan=2 span>
+                  <CENTER><SPAN class=police2>Pour votre RECHERCHE, vous avez 
+                  demandé.</SPAN> <BR>&nbsp; </CENTER></TD></TR>
+              <TR class=impaire>
+                <TD width=200>
+                  <DIV align=right><SPAN class=police2>Club recherché 
+                  :</SPAN>&nbsp; </DIV></TD>
+                <TD width=300>
+                  <DIV align=left><SPAN class=police2>PAU BLEUETS 
+                </SPAN></DIV></TD></TR>
+              <TR class=impaire>
+                <TD width=200>
+                  <DIV align=right>Date<SPAN class=police2> :</SPAN>&nbsp; 
+                </DIV></TD>
+                <TD width=300>
+                  <DIV align=left><SPAN class=police2>Non précisée</SPAN> 
+                </DIV></TD></TR>
+              <TR class=impaire>
+                <TD width=200>
+                  <DIV align=right>Type de match :&nbsp; </DIV></TD>
+                <TD width=300>
+                  <DIV align=left><SPAN class=police2>aller et retour</SPAN> 
+                  </DIV></TD></TR>
+              <TR class=impaire>
+                <TD width=200>
+                  <DIV align=right>Lieu<SPAN class=police2><SPAN class=taille1> 
+                  :&nbsp;</SPAN> </SPAN></DIV></TD>
+                <TD width=300>
+                  <DIV align=left><SPAN class=police2>domicile et 
+                  extérieur</SPAN></DIV></TD></TR>
+              <TR>
+                <TD class=hautpage width=500 colSpan=2>
+                  <DIV align=right><SPAN class=taille1><A class=navicomp 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_rechcal.pl?code_cg=0508&amp;code_comp=31111">Effectuer 
+                  une autre recherche</A></SPAN></DIV></TD></TR>
+              <TR>
+                <TD vAlign=top width=500 colSpan=2><IMG height=1 
+                  src="EquipeB2003_res_fichiers/hhh.gif" 
+            width=498></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width=500 align=center border=0>
+        <TBODY>
+        <TR vAlign=bottom bgColor=#ffffff>
+          <TD><IMG height=1 src="EquipeB2003_res_fichiers/hhh.gif" 
+          width=500></TD></TR>
+        <TR bgColor=#ffffff>
+          <TD>
+            <CENTER>
+            <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+              border=0><TBODY>
+              <TR>
+                <TD class=entete noWrap colSpan=5>&nbsp;</TD></TR>
+              <TR>
+                <TD class=entete noWrap width=145>
+                  <CENTER><SPAN class=couleurE>Recevant</SPAN> </CENTER></TD>
+                <TD class=entete noWrap width=79>&nbsp; </TD>
+                <TD class=entete noWrap width=145>
+                  <CENTER><SPAN class=couleurE>Visiteur</SPAN> </CENTER></TD>
+                <TD class=entete noWrap width=79>
+                  <CENTER><SPAN class=couleurE>Date</SPAN> </CENTER></TD>
+                <TD class=entete width=40>
+                  <CENTER><SPAN class=couleurE></SPAN> </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>ST PALAIS <BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-2</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>01.09.02</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150069','531930','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>2-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>LAROIN <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>15.09.02</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150076','526282','527156','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>HASPARREN <BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>29.09.02</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150079','524058','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>5-3</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>ORTHEZ 2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>13.10.02</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150089','526282','506101','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>BAYONNE CROI. 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>0-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Samedi<BR>26.10.02</SPAN> 
+</CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150095','514041','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-1</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>MOURENX BOURG 
+                <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>10.11.02</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150102','526282','527235','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>LACQ AUDEJOS 
+                <BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>0-1</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>17.11.02</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150105','530343','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>USTARITZ <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>2-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>22.12.02</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150126','523568','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>2-1</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>LUY DU BEARN 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>29.12.02</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150116','526282','544159','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>LAROIN <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>0-3</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>19.01.03</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250076','527156','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>JURANCON 2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>2-1</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>26.01.03</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150109','505876','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>ORTHEZ 2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>2-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>09.02.03</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250089','506101','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-3</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>BAYONNE CROI. 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>23.02.03</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250095','526282','514041','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>MOURENX BOURG 
+                <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-3</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>02.03.03</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250102','527235','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>0-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>LACQ AUDEJOS 
+                <BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>09.03.03</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250105','526282','530343','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>2-2</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>HASPARREN <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>16.03.03</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250079','526282','524058','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>3-2</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>JURANCON 2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>23.03.03</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250109','526282','505876','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>LUY DU BEARN 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>30.03.03</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250116','544159','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>USTARITZ <BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>06.04.03</SPAN> 
+                </CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250126','526282','523568','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>NAY VATH VIEL 
+                <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-0</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>13.04.03</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250128','540446','526282','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>1-4</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>NAY VATH VIEL 
+                <BR></SPAN></CENTER></TD>
+                <TD class=paire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Samedi<BR>19.04.03</SPAN> 
+</CENTER></TD>
+                <TD class=paire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'150128','526282','540446','');">Détail</A> 
+                  </CENTER></TD></TR>
+              <TR>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>PAU BLEUETS 
+                2<BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap width=79>
+                  <CENTER><SPAN class=taille1>0-1</SPAN> <SPAN 
+                  class=etat></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=145>
+                  <CENTER><SPAN class=taille1>ST PALAIS <BR></SPAN></CENTER></TD>
+                <TD class=impaire vAlign=top noWrap align=middle width=79>
+                  <CENTER><SPAN class=date>Dimanche<BR>27.04.03</SPAN> 
+                </CENTER></TD>
+                <TD class=impaire vAlign=center noWrap width=40>
+                  <CENTER><A class=lien2 
+                  href="javascript:Detail('0508',%20%20'250069','526282','531930','');">Détail</A> 
+                  </CENTER></TD></TR></TBODY></TABLE></CENTER></TD></TR>
+        <TR vAlign=top bgColor=#ffffff>
+          <TD><IMG height=1 src="EquipeB2003_res_fichiers/hhh.gif" 
+          width=500></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width=500 bgColor=#ffffff border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+              border=0><TBODY>
+              <TR>
+                <TD colSpan=3><IMG height=1 
+                  src="EquipeB2003_res_fichiers/hhh.gif" width=498></TD></TR>
+              <TR>
+                <TD class=entete width=150>
+                  <DIV align=center><A class=navicomp 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_result.pl?code_cg=0508&amp;code_comp=31111">Résultats</A></DIV></TD>
+                <TD class=entete width=174>
+                  <DIV align=center><A class=navicomp 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_class.pl?code_cg=0508&amp;code_comp=31111">Classement</A></DIV></TD>
+                <TD class=entete width=174>
+                  <DIV align=center><A class=navicomp 
+                  href="http://www.fff.fr/cgi-bin/championnats/champ_agend.pl?code_cg=0508&amp;code_comp=31111">Agenda</A></DIV></TD></TR>
+              <TR>
+                <TD colSpan=3>
+                  <DIV align=center><IMG height=1 
+                  src="EquipeB2003_res_fichiers/hhh.gif" 
+              width=498></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM><!-- #EndEditable -->
+    <TD vAlign=top align=middle bgColor=#ffcc33>
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width=130>
+            <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+            bgColor=#ffcc33 border=0>
+              <TBODY>
+              <TR vAlign=top>
+                <TD vAlign=top>
+                  <CENTER>
+                  <P><FONT face="Arial, Times New Roman" size=2><FONT 
+                  face="Verdana, Arial, Helvetica, sans-serif">Pour vous abonner 
+                  à notre lettre d'informations mensuelles :</FONT></FONT></P>
+                  <P><FONT face="Verdana, Arial, Helvetica, sans-serif" 
+                  size=2><A href="http://www.fff.fr/serv/abonne.php">Cliquez 
+                  ici</A></FONT></P>
+                  <CENTER></CENTER></CENTER></TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=127 align=center 
+              border=0><TBODY>
+              <TR bgColor=#ffcc00>
+                <TD>
+                  <HR width=115>
+                </TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=127 align=center 
+              border=0><TBODY>
+              <TR bgColor=#ffcc33>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN class=police1>Equipe de 
+                        France</SPAN></B></P>
+                        <CENTER><SPAN class=police1>Encouragez les Tricolores 
+                        avant la Coupe des Confédérations de la FIFA, France 
+                        2003 <BR><BR><A 
+                        href="mailto:ALLEZ.LESBLEUS@FFF.FR?subject=Allez_les_Bleus">Allez 
+                        les Bleus</A> <BR><BR>
+                        <TABLE cellSpacing=0 cellPadding=0 width=100 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD></TD></TR></TBODY></TABLE></SPAN></CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN 
+                        class=police1><!--FFF--></SPAN></B></P>
+                        <CENTER><SPAN class=police1><!--FFF-->
+                        <DIV align=center>
+                        &nbsp;</DIV></SPAN></CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN class=police1>Championnats 
+                        Nationaux</SPAN></B></P>
+                        <CENTER><SPAN class=police1><A 
+                        href="http://www.fff.fr/cgi-bin/championnats/champ_nat.pl">Barrages 
+                        d'accession et phases finales</A></SPAN> </CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN 
+                        class=police1>Formation</SPAN></B></P>
+                        <CENTER><SPAN class=police1><A 
+                        href="http://www.fff.fr/formation/technique/6388.shtml">Tout 
+                        savoir sur les diplômes fédéraux et d'Etat</A></SPAN> 
+                        </CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN 
+                        class=police1>Télévision</SPAN></B></P>
+                        <CENTER><SPAN class=police1>
+                        <CENTER><A 
+                        href="http://www.fff.fr/actu/559.shtml">Programme</CENTER></A></SPAN></CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN 
+                        class=police1>Documentation</SPAN></B></P>
+                        <CENTER><SPAN class=police1>
+                        <TABLE cellSpacing=0 cellPadding=0 width=100 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD></TD></TR></TBODY></TABLE><BR>K7 vidéo, 
+                        cédéroms, logiciels et livres sur la formation <BR><A 
+                        href="http://www.fff.fr/presentationfff/ctnfs/2456.shtml">Téléchargez</A></SPAN> 
+                        </CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN 
+                        class=police1>Coordonnées</SPAN></B></P>
+                        <CENTER><SPAN class=police1><A 
+                        href="http://www.fff.fr/presentationfff/coordonnees/1228.shtml">Ligues 
+                        et Districts</A> <BR><BR>Sports-études <BR><A 
+                        href="http://www.fff.fr/presentationfff/coordonnees/1231.shtml">- 
+                        Premier cycle</A> <BR><A 
+                        href="http://www.fff.fr/presentationfff/coordonnees/1232.shtml">- 
+                        Second cycle</A> <BR><BR>Formation du joueur 
+                        professionnel <BR>- <A 
+                        href="http://www.fff.fr/presentationfff/coordonnees/1229.shtml">Centre 
+                        de formation d'un club</A> <BR><BR>Préformation <BR>- <A 
+                        href="http://www.fff.fr/presentationfff/coordonnees/1230.shtml">Pôles 
+                        Espoirs</A></SPAN> </CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <P align=center><B><SPAN class=police1>Euro 
+                        2004</SPAN></B></P>
+                        <CENTER><SPAN class=police1>
+                        <TABLE cellSpacing=0 cellPadding=0 width=93 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD></TD></TR></TBODY></TABLE><BR><A 
+                        href="http://www.fff.fr/euro04/resultats/31998.shtml">Résultats 
+                        et classements</A></SPAN> </CENTER><BR>
+                        <CENTER><SPAN class=police1></SPAN></CENTER>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--fin col droite--></TD></TR>
+  <TR>
+    <TD vAlign=top width=130 bgColor=#000066><IMG height=13 
+      src="EquipeB2003_res_fichiers/basnavig.gif" width=130></TD>
+    <TD width=500 bgColor=#000066>&nbsp;</TD>
+    <TD vAlign=top width=130 bgColor=#000066><IMG height=13 
+      src="EquipeB2003_res_fichiers/basinfo.gif" width=130></TD></TR>
+  <TR>
+    <TD vAlign=center width=130 bgColor=#000066 height=20>
+      <DIV align=center><A class=navigauche 
+      href="http://www.fff.fr/cgi-bin/championnats/champ_calend.pl?code_cg=0508&amp;code_comp=31111&amp;type_rech=club&amp;numclub=526282&amp;indexequipe=2&amp;libelleclub=PAU%20BLEUETS%20%20&amp;typeclub=deux&amp;lieuclub=deux#top">Haut 
+      de la page</A>&nbsp;</DIV><SPACER height="20" type="block" width="1"></TD>
+    <TD width=500 bgColor=#000066>
+      <CENTER><FONT face="Verdana, Arial, Helvetica, sans-serif" color=#ffffff 
+      size=1>Copyright © 1997 FFF - Tous droits réservés pour tous pays - All 
+      rights reserved.</FONT> </CENTER></TD>
+    <TD width=130 bgColor=#000066 height=20><SPACER height="20" type="block" 
+      width="1"></TD></TR>
+  <TR>
+    <TD vAlign=top colSpan=3><IMG height=13 
+      src="EquipeB2003_res_fichiers/baslign.gif" 
+width=760></TD></TR></TBODY></TABLE>&nbsp; &nbsp; 
+<!-- #EndTemplate --></BODY></HTML>

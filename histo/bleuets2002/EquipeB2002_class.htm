@@ -1,0 +1,688 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0090)http://www.fff.fr/cgi-bin/championnats/champ_class.pl?code_cg=0508&code_comp=31121&poule=A -->
+<HTML><HEAD><TITLE>Site Officiel de la F.F.F. - Les championnats régionaux et départementaux</TITLE><!-- #BeginTemplate "/Templates/cham_regi_norm.dwt" --><!-- #BeginEditable "doctitle" --><!-- #EndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language=JavaScript src="DP1_Class_fichiers/FFF_Lib.js"></SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+
+//-----------------------------------------
+// lancement d'une fenetre
+//-----------------------------------------
+function majpoule()
+{
+	var p_poule = document.Formulaire.poule.options[document.Formulaire.poule.selectedIndex].value;
+	if (p_poule!="null")
+	{
+		var param = "code_cg=0508&code_comp=31121&poule=" + p_poule;
+		self.location.href="/cgi-bin/championnats/champ_result.pl?" + param;
+	}
+}
+
+//-----------------------------------------
+// Changement de district
+//-----------------------------------------
+function ChangeCompet()
+{
+	var infos = document.Formulaire.compet.options[document.Formulaire.compet.selectedIndex].value
+	if (infos!="null")
+	{
+	   var code_comp = infos.substring(0,5);
+	   var IsPoule = infos.substring(6,9);
+
+	   if (IsPoule == "oui")
+	   {
+		reponse = launch("/cgi-bin/championnats/champ_listpoul.pl?code_cg=0508&code_comp=" + code_comp, "lavisu", "toolbar=0,location=0,directories=0,status=0,scrollbars=0,resizable=1,copyhistory=0,width=480,height=350,left=10,top=5", "depart");
+	   }
+	   else
+	   {
+		self.location.href="/cgi-bin/championnats/champ_result.pl?code_cg=0508&code_comp=" + code_comp;
+	   }
+	}
+}
+
+
+//-----------------------------------------
+// Changement de district
+//-----------------------------------------
+function majdist()
+{
+	var comp = document.Formulaire.choixdist.options[document.Formulaire.choixdist.selectedIndex].value
+	if (comp!="null")
+	{
+		var param = "code_cg=" + comp;
+		self.location.href="/cgi-bin/championnats/champ_regi.pl?" + param;
+	}
+}
+
+
+//-----------------------------------------
+// Lance la commande launch (ouverture d'une fenetre)
+//-----------------------------------------
+function OuvreFenetre(lien)
+{
+	reponse=launch(lien, "lavisu", "toolbar=0,location=0,directories=0,status=0,scrollbars=0,resizable=1,copyhistory=0,width=480,height=450,left=10,top=5", "depart");
+}
+
+// -->
+</SCRIPT>
+<LINK href="DP1_Class_fichiers/general0.css" rel=stylesheet><LINK 
+href="DP1_Class_fichiers/resucomp.css" rel=stylesheet>
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY bgColor=#000033 leftMargin=0 background=DP1_Class_fichiers/fond_cent.gif 
+topMargin=0 onload="" marginheight="0" marginwidth="0"><A name=top></A>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+  <TBODY>
+  <tr>
+          <TD vAlign=bottom width=130 height=0><IMG height=13 
+            src="DP1_Res_fichiers/hautfff.gif" width=130></TD>
+          <TD vAlign=bottom align=middle height=0><IMG height=13 
+            src="DP1_Res_fichiers/hautlignhm.gif" width=630></TD>
+  </tr>
+  <TR>
+    <TD vAlign=bottom align=middle width=130 bgColor=#990000>&nbsp;</TD>
+    <TD class=titre vAlign=bottom align=middle width=500 
+      bgColor=#990000>&nbsp;&nbsp;<FONT 
+      face="Verdana, Arial, Helvetica, sans-serif" color=#ffffff size=2><B>Les 
+      Championnats régionaux et départementaux 2001-2002</B></FONT> 
+    <TD vAlign=bottom align=middle bgColor=#990000>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top align=middle width=130 bgColor=#000099 height=7>&nbsp;</TD>
+    <TD vAlign=top align=middle width=500 bgColor=#000066 height=7><IMG 
+      height=7 src="DP1_Class_fichiers/hautcent.gif" width=500></TD>
+    <TD vAlign=bottom align=middle bgColor=#ffcc33 height=7>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top align=middle width=130 bgColor=#000099>
+      <DIV align=center>
+      <TABLE cellSpacing=0 cellPadding=0 width=130 border=0>
+        <TBODY>
+        <TR bgColor=#000099>
+          <TD vAlign=top align=middle>
+            <TABLE cellSpacing=0 cellPadding=0 width=130 border=0>
+              <TBODY>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>
+                  &nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099><SPACER height="1" width="2" 
+                  type="BLOCK"></TD>
+                <TD width=128 bgColor=#000099>&nbsp; 
+              </TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR>
+              <TR>
+                <TD width=2 bgColor=#000099>&nbsp;</TD>
+                <TD width=128 bgColor=#000099>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV></TD>
+    <TD vAlign=top align=middle width=500 bgColor=#000066><!-- #BeginEditable "visuel" -->
+      <FORM name=Formulaire>
+      <TABLE cellSpacing=0 cellPadding=0 width=500 align=center bgColor=#ffffff 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+              border=0><TBODY>
+              <TR vAlign=top>
+                <TD><IMG height=1 src="DP1_Class_fichiers/hhh.gif" 
+                width=498></TD></TR>
+              <TR>
+                <TD class=entete>
+                  <DIV align=right><SELECT onchange=majdist(); name=choixdist> 
+                    <OPTION value=0500>LIGUE: AQUITAINE</OPTION> <OPTION 
+                    value=0501>BORDEAUX - dept 33</OPTION> <OPTION 
+                    value=0502>DORDOGNE-PERIGORD - dept 24</OPTION> <OPTION 
+                    value=0504>GIRONDE-ATLANTIQUE - dept 33</OPTION> <OPTION 
+                    value=0503>GIRONDE-EST - dept 33</OPTION> <OPTION 
+                    value=0506>LANDES - dept 40</OPTION> <OPTION 
+                    value=0507>LOT-ET-GARONNE - dept 47</OPTION> <OPTION 
+                    value=0508 selected>PYRENEES ATLANTIQUES - dept 64</OPTION> 
+                    <OPTION value=0505>SAUTERNAIS ET GRAVES - dept 
+                  33</OPTION></SELECT> &nbsp; </DIV></TD></TR>
+              <TR>
+                <TD class=entete>
+                  <DIV align=right>
+                    <p align="right">Classement : <SELECT 
+                  onchange=javascript:ChangeCompet(); name=compet> <OPTION 
+                    value=31111-non>PREMIERE DIVISION</OPTION> <OPTION 
+                    value=null selected>PROMOTION PREMIERE DIVISION</OPTION> 
+                    <OPTION value=31131-oui>DEUXIEME DIVISION</OPTION> <OPTION 
+                    value=31141-oui>PROMOTION DEUXIEME DIVISION</OPTION> <OPTION 
+                    value=31151-oui>SENIORS BRASSAGE 3EME DIVISION</OPTION> 
+                    <OPTION value=31211-oui>SENIORS A 7</OPTION> <OPTION 
+                    value=32211-oui>VETERANS A 7</OPTION> <OPTION 
+                    value=33111-non>PREMIERE DIVISION 18 ANS</OPTION> <OPTION 
+                    value=33121-non>DEUXIEME DIVISION 18 ANS</OPTION> <OPTION 
+                    value=33211-non>PREMIERE DIVISION 15 ANS</OPTION> <OPTION 
+                    value=33221-non>DEUXIEME DIVISION 15 ANS</OPTION> <OPTION 
+                    value=33311-non>PREMIERE DIVISION 13 ANS</OPTION> <OPTION 
+                    value=33321-non>DEUXIEME DIVISION 13 ANS</OPTION> <OPTION 
+                    value=34151-oui>TROISIEME DIVISION 18ANS</OPTION> <OPTION 
+                    value=34251-oui>BRASSAGE 15 ANS A 11</OPTION> <OPTION 
+                    value=34351-oui>BRASSAGE 13 ANS A 11</OPTION> <OPTION 
+                    value=35111-non>18 ANS A 7 BRASSAGE</OPTION> <OPTION 
+                    value=35211-oui>15 ANS A 7 BRASSAGE</OPTION> <OPTION 
+                    value=35311-oui>13 ANS A 7 BRASSAGE</OPTION> <OPTION 
+                    value=37111-oui>FEMININES SENIORS DISTRICT</OPTION> <OPTION 
+                    value=35411-oui>BENJAMINS A 9 DISTRICT</OPTION> <OPTION 
+                    value=35421-oui>BENJAMINS PRE GUERIN</OPTION> <OPTION 
+                    value=35431-oui>BENJAMINS 2EME DIVISION</OPTION> <OPTION 
+                    value=34221-oui>TROISIEME DIVISION 15ANS A 11</OPTION> 
+                    <OPTION value=34231-oui>PROMOTION 3EME DIV. 15ANS A 
+                    11</OPTION> <OPTION value=34321-oui>TROISIEME DIVISION 13ANS 
+                    A 11</OPTION> <OPTION value=34331-oui>PROMOTION 3EME DIV. 
+                    13ANS A 11</OPTION> <OPTION value=35121-non>18ANS A 7 - 2eme 
+                    PHASE -</OPTION> <OPTION value=35321-oui>13ANS A 7 - NIVEAU 
+                    1 -</OPTION> <OPTION value=35331-oui>13ANS A 7 - NIVEAU 2 
+                    -</OPTION> <OPTION value=35221-non>15ANS A 7 - NIVEAU 1 
+                    -</OPTION> <OPTION value=35231-oui>15ANS A 7 - NIVEAU 2 
+                    -</OPTION> <OPTION value=31161-oui>TROISIEME DIVISION 
+                    SENIORS 11</OPTION> <OPTION value=31171-oui>PROMOTION 3EME 
+                    DIVISION SEN 11</OPTION> <OPTION value=31221-oui>SENIORS A 7 
+                    NIVEAU 1</OPTION> <OPTION value=31231-oui>SENIORS A 7 NIVEAU 
+                    2</OPTION> <OPTION value=31241-oui>SENIORS A 7 NIVEAU 
+                    3</OPTION> <OPTION value=32221-oui>VETERANS A 7 NIVEAU 
+                    1</OPTION> <OPTION value=32231-oui>VETERANS A 7 NIVEAU 
+                    2</OPTION> <OPTION value=35441-oui>BENJAMINS GUERIN</OPTION> 
+                    <OPTION value=35451-oui>BENJAMINS 2EME DIVISION</OPTION> 
+                    <OPTION value=35461-oui>BENJAMINS 3EME 
+                  DIVISION</OPTION></SELECT> <SELECT 
+                  onchange=javascript:majpoule(); name=poule><OPTION 
+                    value=null selected>POULE A</OPTION> <OPTION value=B>POULE 
+                    B</OPTION></SELECT> &nbsp;</DIV></TD></TR>
+              <TR>
+                <TD><IMG height=1 src="DP1_Class_fichiers/hhh.gif" 
+                width=498></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=500 align=center border=0>
+        <TBODY>
+        <TR bgColor=#ffffff>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+              border=0><TBODY>
+              <TR class=hautpage>
+                <TD width=25>
+                  <DIV align=center><SPAN class=couleurE>Pl</SPAN></DIV></TD>
+                <TD width=203><SPAN class=couleurE>Club</SPAN></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>Pts</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>JO</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>G</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>N</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>P</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>BP</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>BC</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>DIF</SPAN></DIV></TD>
+                <TD width=30>
+                  <DIV align=center><SPAN class=couleurE>Pén.</SPAN></DIV></TD></TR>
+              <TR class=paire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>1</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>PAU BLEUETS 2</SPAN> 
+                </DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>68</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>14</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>40</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>23</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>+17</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=impaire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>2</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>ARTHEZ BEARN 
+                </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>64</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>38</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>19</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>+19</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=paire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>3</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>LAROIN </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>64</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>36</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>29</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>+7</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=impaire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>BOURNOS </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>56</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>9</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>33</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>26</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>+7</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=paire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>ASMUR 2</SPAN> </DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>54</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>9</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>29</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>24</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>+5</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>* </SPAN></CENTER></TD></TR>
+              <TR class=impaire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>ESPELETTE </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>50</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>35</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>30</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>+5</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=paire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>U.S.A.A. </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>50</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>10</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>40</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>50</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>-10</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=impaire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>ST J. P. PORT 
+                </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>49</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>3</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>11</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>26</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>28</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>-2</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=paire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>9</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>AYGUELONGUE 
+                </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>48</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>11</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>23</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>25</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>-2</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=impaire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>10</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>OLORON F.C 2</SPAN> 
+                </DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>44</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>10</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>37</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>38</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>-1</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=paire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>11</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>OSSES </SPAN></DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>38</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>3</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>21</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>40</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>-19</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>&nbsp; </SPAN></CENTER></TD></TR>
+              <TR class=impaire>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                <TD noWrap width=150>
+                  <DIV align=left><SPAN class=taille1>LONS F.C 3</SPAN> 
+</DIV></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>35</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>3</SPAN> </CENTER></TD>
+                <TD noWrap width=25>
+                  <CENTER><SPAN class=taille1>15</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>32</SPAN> </CENTER></TD>
+                <TD noWrap width=30>
+                  <CENTER><SPAN class=taille1>58</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>-26</SPAN> </CENTER></TD>
+                <TD noWrap width=50>
+                  <CENTER><SPAN class=taille1>* 
+            </SPAN></CENTER></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=500 align=center bgColor=#ffffff 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+              border=0><TBODY>
+              <TR>
+                <TD colSpan=3><IMG height=1 src="DP1_Class_fichiers/hhh.gif" 
+                  width=498></TD></TR>
+              <TR class=entete>
+                <TD colSpan=3>
+                  <DIV align=center>&nbsp;Dernière mise à jour le : 
+                  16.05.02</DIV></TD></TR>
+              <TR>
+                <TD class=vide colSpan=3>
+                  <DIV class=police1 align=right></DIV></TD></TR>
+              <TR class=entete>
+                <TD width=150>
+                </TD>
+                <TD width=174>
+                </TD>
+                <TD width=174>
+                </TD></TR>
+              <TR>
+                <TD colSpan=3><IMG height=1 src="DP1_Class_fichiers/hhh.gif" 
+                  width=498></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM><!-- #EndEditable -->
+    <TD vAlign=top align=middle bgColor=#ffcc33>
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width=130>
+            <TABLE cellSpacing=0 cellPadding=0 width=127 align=center 
+              border=0><TBODY>
+              <TR bgColor=#ffcc00>
+                <TD>
+                  <HR width=115>
+                </TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=127 align=center 
+              border=0><TBODY>
+              <TR bgColor=#ffcc33>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        &nbsp;
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=125 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffcc00>
+                      <TD>
+                        <HR width="90%">
+                      </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--fin col droite--></TD></TR>
+  <TR>
+    <TD vAlign=top width=130 bgColor=#000066><IMG height=13 
+      src="DP1_Class_fichiers/basnavig.gif" width=130></TD>
+    <TD width=500 bgColor=#000066>&nbsp;</TD>
+    <TD vAlign=top width=130 bgColor=#000066><IMG height=13 
+      src="DP1_Class_fichiers/basinfo.gif" width=130></TD></TR>
+  <TR>
+    <TD vAlign=center width=130 bgColor=#000066 height=20>
+      <SPACER height="20" width="1" type="block"></TD>
+    <TD width=500 bgColor=#000066>
+      <CENTER><FONT face="Verdana, Arial, Helvetica, sans-serif" color=#ffffff 
+      size=1>Copyright © 1997 FFF - Tous droits réservés pour tous pays - All 
+      rights reserved.</FONT> </CENTER></TD>
+    <TD width=130 bgColor=#000066 height=20><SPACER height="20" width="1" 
+      type="block"></TD></TR>
+  <TR>
+    <TD vAlign=top colSpan=3><IMG height=13 
+      src="DP1_Class_fichiers/baslign.gif" width=760></TD></TR></TBODY></TABLE>&nbsp; 
+&nbsp; <!-- #EndTemplate --></BODY></HTML>

@@ -1,0 +1,1045 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0107)http://aquitaine.fff.fr/cgi-bin/clubs/clubs_visuclas.pl?numclub=526282&code_cg=0500&code_comp=21141&poule=A -->
+<HTML><HEAD><TITLE>Site officiel de la Ligue d'Aquitaine</TITLE><!-- #BeginTemplate "/templates/Club1.dwt" -->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language=JavaScript 
+src="EquipeA2004_class_fichiers/FFF_Lib.js"></SCRIPT>
+
+<SCRIPT language=JavaScript>
+function OuvreFenetre(lien)
+{
+	reponse=launch(lien, "lavisu", "toolbar=0,location=0,directories=0,status=0,scrollbars=0,resizable=1,copyhistory=0,width=480,height=450,left=10,top=5", "depart");
+}
+
+
+
+function pop(adresse) 
+{ 
+window.open(adresse, "grospop", "toolbar=0,location=0,directories=0,status=0,scrollbars=1,resizable=0,copyhistory=0,width=490,height=400,left=10,top=5");
+}
+
+function pop2(adresse) 
+{ 
+window.open(adresse, "grospop", "toolbar=0,location=0,directories=0,status=0,scrollbars=1,resizable=0,copyhistory=0,width=480,height=400,left=10,top=5");
+}
+
+function PBIdent()
+{
+	window.alert("Votre code secret OFFIFOOT ou votre mot de passe n'est pas correct!");
+}
+
+//-----------------------------------------
+// Changement de district
+//-----------------------------------------
+
+function Rech_Date(ladate)
+{
+	if ( (ladate == "") || (!JS_isNum(ladate)) || (ladate.length!=6) )
+	{
+		window.alert("Veuillez saisir une date valide (au format jjmmaa)");
+		document.Formulaire.date.focus();
+	}
+	else
+	{
+		self.location.href="/cgi-bin/clubs/clubs_agenda.pl?numclub=526282&date=" + ladate;
+	}
+
+	return false;
+}
+
+function ChangeSemaine_ag()
+{
+	var infos = document.Formulaire.semaine.options[document.Formulaire.semaine.selectedIndex].value
+	if (infos!="null")
+	{
+		self.location.href="/cgi-bin/clubs/clubs_agenda.pl?numclub=526282&numsemaine=" + infos;
+	}
+}
+
+function ChangeSemaine_disc()
+{
+	var infos = document.Formulaire.semaine.options[document.Formulaire.semaine.selectedIndex].value
+	if (infos!="null")
+	{
+		self.location.href="/cgi-bin/clubs/clubs_disc.pl?numclub=526282&numsemaine=" + infos;
+	}
+}
+
+
+function ChangeSemaine_resu()
+{
+	var infos = document.Formulaire.semaine.options[document.Formulaire.semaine.selectedIndex].value
+	if (infos!="null")
+	{
+		self.location.href="/cgi-bin/clubs/clubs_resu.pl?numclub=526282&numsemaine=" + infos;
+	}
+}
+
+function ChangeCompet_cale()
+{
+	var infos = document.Formulaire.compet.options[document.Formulaire.compet.selectedIndex].value
+    //if (infos!="null")
+    //{
+    var code_comp = infos.substring(0,5);
+    var coupe = infos.substring(4,5);
+	var IsPoule = infos.substring(6,7);
+	var adr="";
+	//window.alert(coupe);
+	//window.alert(IsPoule);
+
+	if (IsPoule != "#")
+	{		   adr="/cgi-bin/clubs/clubs_calend.pl?numclub=526282&code_cg=0500&poule="+IsPoule+"&code_comp=" + code_comp;
+	}
+	else
+	{			adr="/cgi-bin/clubs/clubs_calend.pl?numclub=526282&code_cg=0500&code_comp=" + code_comp;
+	}
+
+	if (coupe=="9")
+	{
+		adr=adr+"&coupe=oui";
+	}	
+	self.location.href=adr;
+	//window.alert(adr);
+}
+
+
+function ChangeCompet_resu()
+{
+	var infos = document.Formulaire.compet.options[document.Formulaire.compet.selectedIndex].value
+    //if (infos!="null")
+    //{
+    var code_comp = infos.substring(0,5);
+    var coupe = infos.substring(4,5);
+	var IsPoule = infos.substring(6,7);
+	var adr="";
+	//window.alert(coupe);
+	//window.alert(IsPoule);
+
+	if (IsPoule != "#")
+	{		   adr="/cgi-bin/clubs/clubs_calend.pl?numclub=526282&code_cg=0500&poule="+IsPoule+"&code_comp=" + code_comp+"&resultat=oui";
+	}
+	else
+	{			adr="/cgi-bin/clubs/clubs_calend.pl?numclub=526282&code_cg=0500&code_comp=" + code_comp+"&resultat=oui";
+	}
+
+	self.location.href=adr;
+	//window.alert(adr);
+}
+
+
+function ChangeCompet_clas()
+{
+	var infos = document.Formulaire.compet.options[document.Formulaire.compet.selectedIndex].value
+    //if (infos!="null")
+    //{
+    var code_comp = infos.substring(0,5);
+    var coupe = infos.substring(4,5);
+	var IsPoule = infos.substring(6,7);
+	var adr="";
+	//window.alert(coupe);
+	//window.alert(IsPoule);
+
+	if (IsPoule != "#")
+	{		   adr="/cgi-bin/clubs/clubs_visuclas.pl?numclub=526282&code_cg=0500&poule="+IsPoule+"&code_comp=" + code_comp;
+	}
+	else
+	{			adr="/cgi-bin/clubs/clubs_visuclas.pl?numclub=526282&code_cg=0500&code_comp=" + code_comp;
+	}
+
+	if (coupe=="9")
+	{
+		adr=adr+"&coupe=oui";
+	}	
+	self.location.href=adr;
+	//window.alert(adr);
+}
+
+</SCRIPT>
+<LINK href="EquipeA2004_class_fichiers/general_club.css" type=text/css 
+rel=stylesheet><LINK href="EquipeA2004_class_fichiers/resultat2.css" 
+type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2800.1170" name=GENERATOR></HEAD>
+<BODY bgColor=#000000 leftMargin=0 topMargin=0 marginheight="0" 
+marginwidth="0"><A name=top></A>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=122 rowSpan=3><IMG height=130 
+      src="EquipeA2004_class_fichiers/logo.gif" width=148 useMap=#logoMap 
+      border=0 name=logo></TD>
+    <TD vAlign=top width=155 rowSpan=3><IMG height=130 
+      src="EquipeA2004_class_fichiers/blocpub.gif" width=130 border=0 
+      name=blocpub></TD>
+    <TD width=468><IMG height=17 src="EquipeA2004_class_fichiers/hautpub.gif" 
+      width=468 border=0 name=hautpub></TD>
+    <TD rowSpan=2><IMG height=77 src="EquipeA2004_class_fichiers/droitpub.gif" 
+      width=14 border=0 name=droitpub></TD></TR>
+  <TR>
+    <TD><!------- Start of Tag - generated by Sport24.com - Javascript Format , size : 468x60 ------>
+      <TABLE height=60 cellSpacing=0 cellPadding=0 width=468 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width=468 height=60 border="0">
+            <SCRIPT language=JavaScript>
+   var adlink_randomnumber=Math.floor(Math.random()*10000000000);
+   document.write('<scr'+'ipt language="JavaScript" src="http://ad.fr.doubleclick.net/adj/fr.sn.s24.fff0500/autres_pages;dcopt=ist;sz=468x60;ord='+adlink_randomnumber+'?"><\/scr'+'ipt>');
+</SCRIPT>
+            <NOSCRIPT><A 
+            href="http://ad.fr.doubleclick.net/jump/fr.sn.s24.fff0500/autres_pages;sz=468x60;ord=1234567890?" 
+            target=_new><IMG height=60 
+            src="EquipeA2004_class_fichiers/fff0500.gif" width=468 border=0> 
+            </A></NOSCRIPT></TD></TR></TBODY></TABLE><!------- End of Tag - Javascript Format, size : 468x60  ------></TD></TR>
+  <TR>
+    <TD vAlign=top colSpan=2><IMG height=53 
+      src="EquipeA2004_class_fichiers/baspub.gif" width=482 border=0 
+    name=baspub></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=2 background=EquipeA2004_class_fichiers/bordG.gif><SPACER 
+      height="5" width="2" type="block"></TD>
+    <TD vAlign=top width=125 bgColor=#b8b8b8>
+      <DIV align=center>
+      <TABLE cellSpacing=0 cellPadding=0 width=123 align=center border=0><!--ajout--><!--fin ajout-->
+        <TBODY>
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR>
+        <TR class=menuniv1 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/accueil.pl">CLUBS</A></TD></TR>
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR>
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/accueil_club.pl?numclub=526282">Accueil 
+            du club</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout--><!--ajout--><!--fin ajout-->
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/corres.pl?numclub=526282&amp;type=autres">Correspondants</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout-->
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_resu.pl?numclub=526282">Résultats</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout-->
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_agenda.pl?numclub=526282">Agenda</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout-->
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_compet_rechguid_resu.pl?club=526282">Calendriers</A></TD></TR>
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR>
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_listcompet_clas.pl?numclub=526282">Classements</A></TD></TR>
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR>
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_disc.pl?numclub=526282">Discipline</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout-->
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_muta.pl?numclub=526282">Mutations</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout--><!--fin ajout-->
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="http://extraclub.fff.fr/cgi-bin/extraclub/saisresu/saisie_matches.pl" 
+            target=_blank>Saisie résultats</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout--><!--fin ajout-->
+        <TR class=menuniv2 vAlign=center>
+          <TD width=10>
+            <DIV align=right><IMG height=5 
+            src="EquipeA2004_class_fichiers/puce2.gif" width=9> </DIV></TD>
+          <TD width=113><A class=navigauche_niv2 
+            href="javascript:RechGuid('clubs')">Un autre club</A></TD></TR><!--ajout-->
+        <TR vAlign=center>
+          <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--></TBODY></TABLE><LINK 
+      href="EquipeA2004_class_fichiers/general0.css" type=text/css 
+      rel=stylesheet><LINK href="EquipeA2004_class_fichiers/resultat2.css" 
+      type=text/css rel=stylesheet><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width=125 border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width=123 align=center border=0><!--ajout--><!--fin ajout-->
+              <TBODY>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10>
+                  <DIV align=right><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> </DIV></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/ligue/index.shtml">LA 
+                  LIGUE </A></TD></TR><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout-->
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR><!--fin ajout--><!--ajout--><!--fin ajout-->
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/actualite/index.shtml">ACTUALITE</A></TD></TR><!--ajout--><!--fin ajout--><!--ajout-->
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR><!--fin ajout-->
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113 height=15>
+                  <DIV align=left><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/agenda/index.shtml">AGENDA</A></DIV></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/competitions/index.shtml">COMPETITIONS</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10>
+                  <DIV align=right><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> </DIV></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/licences/index.shtml">LICENCES</A></TD></TR><!--ajout-->
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout-->
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113 height=15>
+                  <DIV align=left><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/technique/index.shtml">TECHNIQUE</A></DIV></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113 height=15>
+                  <DIV align=left><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/arbitrage/index.shtml">ARBITRAGE</A></DIV></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113 height=15>
+                  <DIV align=left><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/formations/index.shtml">FORMATIONS</A></DIV></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/infospratiques/index.shtml">INFOS 
+                  PRATIQUES </A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/districts/index.shtml">LES 
+                  DISTRICTS</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <DIV align=center><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> </DIV></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/servfff/calendgen/calendrier.php">CALENDRIERS</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/zoom/index.shtml">ZOOM 
+                  SUR...</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/partenaires/index.shtml">PARTENAIRES</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/annonces/index.shtml">ANNONCES</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/archives/index.shtml">ARCHIVES</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <CENTER><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> 
+</CENTER></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/liens/index.shtml">LIENS</A></TD></TR>
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR>
+              <TR class=menuniv1 vAlign=center>
+                <TD width=10 height=15>
+                  <DIV align=center><IMG height=5 
+                  src="EquipeA2004_class_fichiers/puce.gif" width=9> </DIV></TD>
+                <TD width=113><A class=navigauche 
+                  href="http://aquitaine.fff.fr/cg/0500/www/courrier/index.shtml">COURRIER</A></TD></TR><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout-->
+              <TR vAlign=center>
+                <TD class=interligne colSpan=2><SPACER height="1" width="1" 
+                  type="block"></TD></TR><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--><!--ajout--><!--fin ajout--></TBODY></TABLE></TD></TR></TBODY></TABLE><BR><!-- debut code moteur -->
+      <TABLE cellSpacing=0 width=123 border=0>
+        <TBODY>
+        <TR vAlign=center>
+        <TR colspan="2">
+          <TD colSpan=2>
+            <FORM action=http://aquitaine.fff.fr/serv/searchpdf.php 
+            method=get><INPUT type=hidden value=1181 name=s> 
+            <TABLE cellSpacing=0 cellPadding=0 width=123 align=center 
+              border=0><TBODY>
+              <TR>
+                <TD class=interligne colSpan=2 height=1><SPACER height="1" 
+                  width="1" type="block"></TD></TR>
+              <TR>
+                <TD class=cadre_nav colSpan=2>
+                  <DIV align=center><B>Moteur de recherche </B></DIV></TD></TR>
+              <TR>
+                <TD class=cadre_nav colSpan=2>
+                  <DIV align=center><SPAN class=police1><INPUT size=12 name=REC> 
+                  <BR><INPUT type=hidden value=0 name=searchres> <INPUT 
+                  type=hidden value=1181 name=searchsite> <INPUT type=hidden 
+                  value=1 name=TM> <INPUT type=hidden value=1 name=ME> <INPUT 
+                  type=hidden value=0 name=tri> <INPUT type=hidden value=1 
+                  name=RECDATE> </SPAN></DIV></TD></TR>
+              <TR>
+                <TD class=cadre_nav colSpan=2>
+                  <DIV align=center><INPUT type=submit value=ok name=SUBMIT> 
+                  </DIV><SPACER height="1" type="block"></TD></TR>
+              <TR>
+                <TD class=cadre_nav_inv colSpan=2>
+                  <DIV align=center><A class=navigauche_niv2 
+                  href="http://aquitaine.fff.fr/serv/searchpdf.php?s=1181">Recherche 
+                  avancée</A></DIV></TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE><!-- fin code moteur --></DIV></TD>
+    <TD width=3 background=EquipeA2004_class_fichiers/bordintG.gif><SPACER 
+      height="5" width="3" type="block"></TD>
+    <TD vAlign=top width=500 bgColor=#cccccc>
+      <CENTER><!-- #BeginEditable "visuel" -->
+      <TABLE cellSpacing=0 cellPadding=0 width=500 align=center border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <FORM name=Formulaire>
+          <TD rowSpan=2>
+            <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+              border=0><TBODY>
+              <TR>
+                <TD vAlign=top bgColor=#ffffff>
+                  <TABLE cellSpacing=0 cellPadding=0 width=500 align=center 
+                  bgColor=#ffffff border=0>
+                    <TBODY>
+                    <TR vAlign=top bgColor=#ffffff>
+                      <TD>
+                        <TABLE cellSpacing=0 cellPadding=0 width=498 
+                        align=center border=0>
+                          <TBODY>
+                          <TR>
+                            <TD vAlign=top width=500><IMG height=1 
+                              src="EquipeA2004_class_fichiers/hhh.gif" 
+                            width=498></TD></TR>
+                          <TR class=impaire>
+                            <TD vAlign=top width=498>
+                              <DIV align=center><A class=navicomp 
+                              href="http://aquitaine.fff.fr/cgi-bin/clubs/accueil_club.pl?numclub=526282">BLEUETS 
+                              DE NOTRE DAME DE PAU </A><BR>Les 
+                            classements</DIV></TD></TR>
+                          <TR class=impaire>
+                            <TD>
+                              <DIV align=center>LIGUE : AQUITAINE 
+                              <DIV align=right><BR><SELECT 
+                              onchange=javascript:ChangeCompet_clas(); 
+                              name=compet> <OPTION value=null selected>SENIORS 
+                                PROMOTION DE LIGUE - POULE A - Eq. 1</OPTION> 
+                                <OPTION value=23331-D>13 ANS P.H. - POULE D - 
+                                Eq. 1</OPTION></SELECT> </DIV></DIV></TD></TR>
+                          <TR>
+                            <TD><IMG height=1 
+                              src="EquipeA2004_class_fichiers/hhh.gif" 
+                            width=498></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+            <TABLE cellSpacing=0 cellPadding=0 width=500 align=center 
+            bgColor=#ffffff border=0>
+              <TBODY>
+              <TR vAlign=top>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD colSpan=2 span><IMG height=1 
+                        src="EquipeA2004_class_fichiers/hhh.gif" 
+width=498></TD></TR>
+                    <TR class=impaire>
+                      <TD width=330><!--debut clas-->
+                        <TABLE>
+                          <TBODY>
+                          <TR>
+                            <TD class=impaire width=300>
+                              <DIV align=center>Classement de 
+                          l'équipe</DIV></TD></TR>
+                          <TR>
+                            <TD class=impaire width=300>
+                              <DIV align=center><SPAN class=etat>POS 9, 47 PTS, 
+                              22 Joués 
+                        (7v/4n/11d)<BR></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+                      <TD class=impaire vAlign=bottom width=148>
+                        <DIV align=right><A class=navicomp 
+                        href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_calend.pl?numclub=526282&amp;code_cg=0500&amp;code_comp=21141&amp;poule=A">les 
+                        résultats du club</A> </DIV></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=2><IMG height=1 
+                        src="EquipeA2004_class_fichiers/hhh.gif" 
+                    width=498></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+            <TABLE cellSpacing=0 cellPadding=0 width=500 align=center 
+              border=0><TBODY>
+              <TR vAlign=top>
+                <TD><IMG height=1 
+                  src="D:\Temp\EquipeA2004_class_fichiers\hhh(1).gif" 
+                width=500></TD></TR>
+              <TR bgColor=#ffffff>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR class=vide>
+                      <TD width=25>
+                        <DIV align=center>Pl</DIV></TD>
+                      <TD width=205>Club</TD>
+                      <TD width=30>
+                        <DIV align=center>Pts</DIV></TD>
+                      <TD width=30>
+                        <DIV align=center>JO</DIV></TD>
+                      <TD width=30>
+                        <DIV align=center>G</DIV></TD>
+                      <TD width=30>
+                        <DIV align=center>N</DIV></TD>
+                      <TD width=30>
+                        <DIV align=center>P</DIV></TD>
+                      <TD width=29>
+                        <DIV align=center>BP</DIV></TD>
+                      <TD width=29>
+                        <DIV align=center>BC</DIV></TD>
+                      <TD width=50>
+                        <DIV align=center>DIF</DIV></TD>
+                      <TD width=50>
+                        <DIV align=center>Pén.</DIV></TD></TR>
+                    <TR class=paire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>1</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>ROQUEFORT U.S 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>66</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>13</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>42</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>19</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>+23</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=impaire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>2</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>ARTISIENNE AS 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>65</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>3</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>41</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>20</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>+21</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=paire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>3</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>BRETAGNE A.S 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>62</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>32</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>+10</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=impaire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>LAMOTHE-M U.S 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>59</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>11</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>31</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>30</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>+1</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=paire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>SALIES BEARN 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>57</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>10</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>27</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>23</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>+4</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=impaire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>BILLERE ST LA 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>50</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>10</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>33</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>34</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>-1</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=paire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>LUY DE BEARN 
+                        2</SPAN> </DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>49</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>9</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>24</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>25</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>-1</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=impaire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>PORT STE MAR. 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>48</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>2</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>33</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>47</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>-14</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=paire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>9</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=club>PAU BLEUETS 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>47</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>7</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>4</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>11</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>17</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>28</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>-11</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=impaire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>10</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>O. CERONS 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>42</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>3</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>11</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>8</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>18</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>28</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>-10</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=paire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>11</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>YGOSSAIS STAD 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>42</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>5</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>34</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>-12</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+</SPAN></CENTER></TD></TR>
+                    <TR class=impaire>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>12</SPAN> </CENTER></TD>
+                      <TD noWrap width=150>
+                        <DIV align=left><SPAN class=taille1>VILLANDRAUT P 
+                        </SPAN></DIV></TD>
+                      <TD noWrap width=30>
+                        <CENTER><SPAN class=taille1>41</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>22</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>6</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>2</SPAN> </CENTER></TD>
+                      <TD noWrap width=25>
+                        <CENTER><SPAN class=taille1>14</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>31</SPAN> </CENTER></TD>
+                      <TD noWrap width=29>
+                        <CENTER><SPAN class=taille1>41</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>-10</SPAN> </CENTER></TD>
+                      <TD noWrap width=50>
+                        <CENTER><SPAN class=taille1>&nbsp; 
+                    </SPAN></CENTER></TD></TR></TBODY></TABLE></TD></TR>
+              <TR vAlign=top>
+                <TD><IMG height=1 
+                  src="D:\Temp\EquipeA2004_class_fichiers\hhh(1).gif" 
+                width=500></TD></TR></TBODY></TABLE><BR>
+            <TABLE cellSpacing=0 cellPadding=0 width=500 border=0>
+              <TBODY>
+              <TR vAlign=top>
+                <TD><IMG height=1 
+                  src="D:\Temp\EquipeA2004_class_fichiers\hhh(1).gif" 
+                width=500></TD></TR>
+              <TR bgColor=#ffffff>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=498 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD class=impaire><A 
+                        href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_visuclas.pl?numclub=526282&amp;code_cg=0500&amp;code_comp=21141&amp;homologue=1&amp;poule=A">&nbsp;Consulter 
+                        le dernier classement homologué</A> 
+                </TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><IMG height=1 
+                  src="D:\Temp\EquipeA2004_class_fichiers\hhh(1).gif" 
+                width=500></TD></TR></TBODY></TABLE></TD></FORM></TR>
+        <TR></TR></TBODY></TABLE><!-- #EndEditable --></CENTER></TD>
+    <TD width=3 background=EquipeA2004_class_fichiers/bordintD.gif><SPACER 
+      height="5" width="3" type="block"></TD>
+    <TD vAlign=top width=125 bgColor=#b8b8b8>
+      <TABLE cellSpacing=0 cellPadding=0 width=125 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <HR width=115>
+          </TD></TR></TBODY></TABLE>
+      <STYLE type=text/css></STYLE>
+
+      <DIV align=center></DIV>
+      <DIV align=center><SPAN class=txt_info>A lire aussi, sur</SPAN> <A 
+      class=menuinfo href="http://www.fff.fr/" target=_blank>FFF.FR</A> 
+      <HR width="90%">
+
+      <OBJECT 
+      codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0 
+      height=80 width=120 classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="movie" VALUE="/www/flash/desi_02.swf"><PARAM NAME="quality" VALUE="high">
+      <embed src="/www/flash/desi_02.swf" quality=high 
+      pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+      type="application/x-shockwave-flash" width="120" 
+      height="80"></embed></OBJECT><SPAN class=txt_info></SPAN>
+      <HR width="90%">
+      <SPAN class=txt_info>Présentation de la Ligue Fédérale du Football Amateur 
+      :</SPAN><BR><A class=menuinfo 
+      href="http://www.fff.fr/presentationfff/ctnfs/1031.shtml" 
+      target=_blank><BR></A><A class=menuinfo 
+      href="http://www.fff.fr/presentationfff/lffa/1019.shtml" 
+      target=_blank>Lire</A> 
+      <HR width="90%">
+      <SPAN class=txt_info>Tout savoir sur <BR>l'INF 
+      Clairefontaine</SPAN><BR><BR><A class=menuinfo 
+      href="http://www.fff.fr/presentationfff/ctnfs/1031.shtml" 
+      target=_blank>Lire</A> 
+      <HR width="90%">
+      <SPAN class=txt_info>TV <BR>Retransmission des matches<BR></SPAN><BR>
+      <DIV align=center></DIV>
+      <DIV align=center><A class=menuinfo 
+      href="http://www.fff.fr/actu/559.shtml" target=_blank>Détails</A> </DIV>
+      <HR width="90%">
+
+      <OBJECT 
+      codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0 
+      height=100 width=118 classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="movie" VALUE="/www/saisie_resultats3.swf"><PARAM NAME="quality" VALUE="high">
+                  <embed src="/www/saisie_resultats3.swf" quality=high 
+      pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+      type="application/x-shockwave-flash" width="118" height="100">    </embed> 
+        </OBJECT>
+      <HR width="90%">
+
+      <DIV align=center><SPAN class=txt_info>Sections 
+      Sports-Etudes<BR></SPAN></DIV><BR></DIV>
+      <DIV align=center><A class=menuinfo 
+      href="http://www.fff.fr/presentationfff/coordonnees/1231.shtml" 
+      target=_blank>- Premier cycle</A> <BR><A class=menuinfo 
+      href="http://www.fff.fr/presentationfff/coordonnees/1232.shtml" 
+      target=_blank>- Second cycle</A> <BR></DIV>
+      <HR width="90%">
+
+      <DIV align=center><SPAN class=txt_info>Formation du joueur 
+      professionnel<BR></SPAN><BR><A class=menuinfo 
+      href="http://www.fff.fr/presentationfff/coordonnees/1229.shtml" 
+      target=_blank>Centres de formation d'un club</A><BR></DIV>
+      <DIV align=center>
+      <HR width="90%">
+
+      <DIV align=center><SPAN class=txt_info>Préformation<BR></SPAN><BR><A 
+      class=menuinfo 
+      href="http://www.fff.fr/presentationfff/coordonnees/1230.shtml" 
+      target=_blank>Pôles Espoirs</A><BR></DIV>
+      <HR width="90%">
+      </DIV></TD>
+    <TD width=2 background=EquipeA2004_class_fichiers/bordD.gif><SPACER 
+      height="5" width="2" type="block"></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD><IMG height=41 src="EquipeA2004_class_fichiers/bas.gif" width=760 
+      useMap=#Map border=0><MAP name=Map><AREA shape=RECT target=_self 
+        coords=6,10,126,30 
+        href="http://aquitaine.fff.fr/cgi-bin/clubs/clubs_visuclas.pl?numclub=526282&amp;code_cg=0500&amp;code_comp=21141&amp;poule=A#top"></MAP></TD></TR></TBODY></TABLE><MAP 
+name=logoMap><AREA shape=CIRCLE target=_self coords=62,61,48 
+  href="http://aquitaine.fff.fr/"></MAP><!-- #EndTemplate --></BODY></HTML>
